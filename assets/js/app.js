@@ -5,20 +5,9 @@ function d3app() {
 	var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
                 11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
 
-    /*
-    d3.select("body").selectAll("div")
-    	.data(dataset)
-    	.enter()
-    	.append("div")
-    	.attr("class", "bar")
-    	.style("height", function(d) {
-    		var barheight = d * 5;
-    		return barheight + "px";
-    	});
-	*/
-
     var w = 500;
     var h = 100;
+    var barpadding = 1;
 
     var svg = d3.select("body")
     	.append("svg")
@@ -29,13 +18,39 @@ function d3app() {
     	.data(dataset)
     	.enter()
     	.append("rect")
+    	.attr("fill", function(d) {
+    		return "rgb(0, 0, " + (d * 10) + ")";
+    	})
     	.attr("x", function(d, i) {
     		return i * (w / dataset.length);
     	})
-    	.attr("y", 0)
-    	.attr("width", 20)
-    	.attr("height", 100);
+    	.attr("y", function(d) {
+    		return h - (d * 4);
+    	})
+    	.attr("width", w / dataset.length - barpadding)
+    	.attr("height", function(d) {
+    		return d * 5;
+    	});
 
+    //add the text
+
+    svg.selectAll("text")
+    	.data(dataset)
+    	.enter()
+    	.append("text")
+    	.text(function(d) {
+    		return d;
+    	})
+    	.attr("text-anchor", "middle")
+    	.attr("font-family", "sans-serif")
+    	.attr("font-size", "11px")
+    	.attr("fill", "white")
+    	.attr("x", function(d, i) {
+    		return i * (w / dataset.length) + (w / dataset.length - barpadding) / 2;
+    	})
+    	.attr("y", function(d) {
+    		return h - (d * 4) + 14;
+    	});
 }
 
 
