@@ -3,12 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Interactive Resume</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="d3/d3.v3.min.js"></script>
-	<script src="assets/js/bullet.js"></script>
+	<script type="text/javascript" src="assets/js/typed.js"></script>
 	<script type="text/javascript" src="assets/js/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/app.css" />
 </head>
 	<body>
+		<div class="intro">
+			<div class="typewrap">
+				<span id="typed" style="white-space:pre"></span>
+			</div>
+		</div>
+		<div class="resumewrapper">
+			<div class="section" id="skillchart">
+				<h1>Skills</h1>
+				<p>Just some of my many skills</p>
+			</div>
+			<div class="section" id="experience">
+				<h1>Experience</h1>
+				<p>My Experience</p>
+			</div>
+			<div class="section" id="strengths">
+				<h1>Strengths</h1>
+				<p>Most of my professional strengths</p>
+			</div>
+		</div>
 		<script type="text/javascript">d3app();</script>
 	</body>
 </html>
